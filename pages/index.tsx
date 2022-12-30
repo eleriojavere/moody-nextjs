@@ -1,6 +1,7 @@
 import Header from "../src/components/Header";
 import { useAuth } from "../src/context/AuthContext";
 import { useRouter } from "next/router";
+import MultiStepForm from "../src/components/MultiStepForm";
 
 export default function Home() {
   const { currentUser } = useAuth();
@@ -12,6 +13,7 @@ export default function Home() {
   return (
     <div className="dashboard">
       <Header />
+      <MultiStepForm />
     </div>
   );
 }

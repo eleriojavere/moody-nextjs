@@ -1,4 +1,4 @@
-import "../styles/entry.scss";
+import "../styles/globals.scss";
 import type { AppProps } from "next/app";
 import { AuthProvider } from "../src/context/AuthContext";
 
