@@ -1,0 +1,14 @@
+.mood-image {
+  &.green {
+    background-color: $pale-green;
+  }
+  &.blue {
+    background-color: $blue;
+  }
+  &.purple {
+    background-color: $purple;
+  }
+  &.yellow {
+    background-color: $yellow;
+  }
+}

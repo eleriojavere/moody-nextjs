@@ -5,15 +5,17 @@ export default function PrimaryButton({
   isDisabled,
   children,
   onClick,
+  className,
 }: {
   type?: "button" | "submit";
   isDisabled?: boolean;
   children: ReactNode;
   onClick?: () => void;
+  className?: string;
 }) {
   return (
     <button
-      className="primary-button"
+      className={`primary-button ${className}`}
       disabled={isDisabled}
       type={type || "button"}
       onClick={onClick}
