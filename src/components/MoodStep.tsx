@@ -1,7 +1,8 @@
 import { useMemo, useState } from "react";
+import { useForm } from "../context/FormContext";
 
 export default function MoodStep() {
-  const [activeTile, setActiveTile] = useState<null | string>(null);
+  const { selectedMood, changeMood } = useForm();
 
   const moods = [
     "sad",
@@ -16,7 +17,7 @@ export default function MoodStep() {
   const colors = ["green", "blue", "yellow", "purple"];
 
   const toggleSelection = (mood: string) => {
-    setActiveTile(mood);
+    changeMood(mood);
   };
 
   const computeExpensiveValue = () => {
@@ -30,7 +31,7 @@ export default function MoodStep() {
   return (
     <>
       <div className="font-bold mb-2">How are you feeling today?</div>
-      <div className="flex flex-wrap max-w-xl gap-2 ">
+      <div className="flex flex-wrap max-w-xl gap-2">
         {moods.map((mood, key) => {
           const mappedColors = memoizedValue.find(
             (value) => value.name === mood
@@ -41,7 +42,7 @@ export default function MoodStep() {
               key={`${mood}-${key}`}
               className={`w-28 h-28 mood-image text-white rounded justify-center flex items-center cursor-pointer ${
                 mappedColors ? colors[mappedColors.color] : ""
-              } ${activeTile === mood ? "active" : ""}`}
+              } ${selectedMood === mood ? "active" : ""}`}
             >
               {mood}
             </button>

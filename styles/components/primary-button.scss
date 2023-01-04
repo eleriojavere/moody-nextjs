@@ -8,4 +8,9 @@
   font-weight: bold;
   border: none;
   cursor: pointer;
+
+  &.disabled {
+    cursor: auto;
+    background-color: $disabled-gray;
+  }
 }

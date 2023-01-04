@@ -3,10 +3,12 @@ import { useForm } from "../context/FormContext";
 import PrimaryButton from "./PrimaryButton";
 
 export default function FormStepIndicator() {
-  const { activeStepIndex, changeActiveStepIndex } = useForm();
+  const { activeStepIndex, changeActiveStepIndex, selectedMood } = useForm();
+  const [stepperCount, setStepperCount] = useState(0);
 
   useEffect(() => {
     const stepperItems = document.querySelectorAll(".stepper-item");
+    setStepperCount(stepperItems.length - 1);
     stepperItems.forEach((step, i) => {
       if (i <= activeStepIndex) {
         step.classList.add("bg-indigo-500", "text-white");
@@ -16,9 +18,23 @@ export default function FormStepIndicator() {
     });
   }, [activeStepIndex]);
 
+  const handleClick = () => {
+    if (activeStepIndex === stepperCount) {
+      console.log("submit");
+    } else {
+      changeActiveStepIndex(activeStepIndex + 1);
+    }
+  };
   return (
     <div className="flex justify-between items-end">
-      <div className="w-2/3 flex flex-row items-center ">
+      {activeStepIndex !== 0 && (
+        <PrimaryButton
+          onClick={() => changeActiveStepIndex(activeStepIndex - 1)}
+        >
+          previous
+        </PrimaryButton>
+      )}
+      <div className="w-1/3 flex flex-row items-center ">
         <div className="stepper-item w-8 h-8 text-center font-medium border-2 rounded-full">
           1
         </div>
@@ -31,11 +47,9 @@ export default function FormStepIndicator() {
           3
         </div>
       </div>
-      <div className="w-1/3 flex justify-end">
-        <PrimaryButton
-          onClick={() => changeActiveStepIndex(activeStepIndex + 1)}
-        >
-          next
+      <div className="flex justify-end">
+        <PrimaryButton isDisabled={!selectedMood} onClick={handleClick}>
+          {stepperCount !== activeStepIndex ? "next" : "submit"}
         </PrimaryButton>
       </div>
     </div>

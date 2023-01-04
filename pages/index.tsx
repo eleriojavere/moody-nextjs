@@ -15,13 +15,13 @@ export default function Home() {
   }
 
   useEffect(() => {
-    document.body.style.backgroundColor = "#b8c5d3";
+    document.body.style.backgroundColor = "#F5F6FA";
   }, []);
 
   return (
     <div className="dashboard">
       <Header />
-      <div className="px-4 py-2 bg-white text-black	rounded min-h-80">
+      <div className="px-6 py-6 bg-white text-black	rounded min-h-80">
         <Questionnaire />
         <FormStepIndicator />
       </div>

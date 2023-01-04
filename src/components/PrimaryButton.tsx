@@ -15,7 +15,7 @@ export default function PrimaryButton({
 }) {
   return (
     <button
-      className={`primary-button ${className}`}
+      className={`primary-button ${className} ${isDisabled ? "disabled" : ""}`}
       disabled={isDisabled}
       type={type || "button"}
       onClick={onClick}

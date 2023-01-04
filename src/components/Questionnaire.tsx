@@ -3,7 +3,7 @@ import { useForm } from "../context/FormContext";
 import MoodStep from "./MoodStep";
 
 export default function Questionnaire() {
-  const { activeStepIndex, changeActiveStepIndex } = useForm();
+  const { activeStepIndex } = useForm();
   let stepContent;
 
   switch (activeStepIndex) {
@@ -11,19 +11,10 @@ export default function Questionnaire() {
       stepContent = <MoodStep />;
       break;
     case 1:
-      stepContent = (
-        <>
-          <div>jee 2</div>
-          <button onClick={() => changeActiveStepIndex(2)}>next</button>
-        </>
-      );
+      stepContent = <div> Step 2</div>;
       break;
     case 2:
-      stepContent = (
-        <>
-          <div>jee 3</div> <button>finish</button>
-        </>
-      );
+      stepContent = <div>Step 3</div>;
       break;
     default:
       stepContent = null;
