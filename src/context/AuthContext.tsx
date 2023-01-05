@@ -59,6 +59,7 @@ export function AuthProvider({ children }: { children: ReactElement }) {
       .catch((error) => {
         setError({ code: error.code, message: error.message });
       });
+    window.localStorage.removeItem("spotify_token");
   }
 
   useEffect(() => {

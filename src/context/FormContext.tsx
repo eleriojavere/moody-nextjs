@@ -1,10 +1,11 @@
-import React, { ReactElement, useContext, useEffect, useState } from "react";
+import React, { ReactElement, useContext, useState } from "react";
 
 export interface FormContextInterface {
   activeStepIndex: number;
   selectedMood: string | null;
   changeActiveStepIndex: (value: number) => void;
   changeMood: (value: string) => void;
+  submitForm: (url: string) => void;
 }
 
 export const FormContext = React.createContext<FormContextInterface>({
@@ -12,6 +13,7 @@ export const FormContext = React.createContext<FormContextInterface>({
   selectedMood: null,
   changeActiveStepIndex: () => {},
   changeMood: () => {},
+  submitForm: () => {},
 });
 
 export function FormProvider({ children }: { children: ReactElement }) {
@@ -27,11 +29,22 @@ export function FormProvider({ children }: { children: ReactElement }) {
     setSelectedMood(value);
   };
 
+  const submitForm = () => {
+    try {
+      fetch("").then((res) => {
+        console.log("res", res);
+      });
+    } catch {
+      console.log("error");
+    }
+  };
+
   const value = {
     activeStepIndex,
     changeActiveStepIndex,
     selectedMood,
     changeMood,
+    submitForm,
   };
 
   return <FormContext.Provider value={value}>{children}</FormContext.Provider>;

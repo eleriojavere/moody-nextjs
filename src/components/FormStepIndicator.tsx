@@ -3,7 +3,8 @@ import { useForm } from "../context/FormContext";
 import PrimaryButton from "./PrimaryButton";
 
 export default function FormStepIndicator() {
-  const { activeStepIndex, changeActiveStepIndex, selectedMood } = useForm();
+  const { activeStepIndex, changeActiveStepIndex, selectedMood, submitForm } =
+    useForm();
   const [stepperCount, setStepperCount] = useState(0);
 
   useEffect(() => {
@@ -20,11 +21,12 @@ export default function FormStepIndicator() {
 
   const handleClick = () => {
     if (activeStepIndex === stepperCount) {
-      console.log("submit");
+      submitForm();
     } else {
       changeActiveStepIndex(activeStepIndex + 1);
     }
   };
+
   return (
     <div className="flex justify-between items-end">
       {activeStepIndex !== 0 && (
